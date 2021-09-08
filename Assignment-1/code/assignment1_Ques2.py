@@ -92,7 +92,9 @@ def bairstow(equation,r,s,maxiters,maxerror):
         rootsbairstow.append(complex((-b[1]+cmath.sqrt(b[1]*b[1]-4*b[2]*b[0]))/2*b[0]))
         rootsbairstow.append(complex((-b[1]-cmath.sqrt(b[1]*b[1]-4*b[0]*b[2]))/2*b[0]))
     elif degreefx==3:
-        rootsbairstow.append(complex(-s/r,0))
+        al,be=fx.div(Poly(x**2-r*x-s,x))
+        bl=al.all_coeffs()
+        rootsbairstow.append(complex(-1*bl[1]/bl[0],0))
     return 0
 
 eq = input('Please enter a function (eg. 600*x**4 - 550*x**3 + 200*x**2 - 20*x - 1): \n')
