@@ -57,6 +57,7 @@ def bairstow(equation,r,s,maxiters,maxerror):
     errorsS=[]
     degreefx=0
     for i in range(0,maxiters):
+        print('\niteration=',i+1)#//
         b=[]
         c=[]
         fx=Poly(equation,x)
@@ -66,6 +67,7 @@ def bairstow(equation,r,s,maxiters,maxerror):
         b1b0=beta.all_coeffs()
         b1b0[1]=b1b0[1]+b1b0[0]*r
         b=b+b1b0
+        print('b=',b)#////
         for j in range(0,degree(fx)):
             if len(c)==0:
                 c.append(b[j]) #calcualting value of Cn.
@@ -73,13 +75,19 @@ def bairstow(equation,r,s,maxiters,maxerror):
                 c.append(b[j]+r*c[0]) #calcualting value of Cn-1.
             else:
                 c.append(b[j]+r*c[j-1]+s*c[j-2]) #calcualting values of Cn-2 to C1.
+        print('c=',c)#//////////////
         A=numpy.array([[c[len(c)-2],c[len(c)-3]],[c[len(c)-1],c[len(c)-2]]], dtype='float')
         B=numpy.array([-b[len(b)-2],-b[len(b)-1]], dtype='float')
         deltaR,deltaS=numpy.linalg.solve(A,B)
+        print('deltaR=',deltaR)##########
+        print('deltaS=',deltaS)###########
         r=r+deltaR
         s=s+deltaS
+        print('r=',r,'\ns=',s)#///////////
         EaR=abs(deltaR/r)*100
         EaS=abs(deltaS/s)*100
+        print('EaR=',EaR)
+        print('EaS=',EaS)
         errorsR.append(EaR)
         errorsS.append(EaS)
         if EaS<maxerror and EaR<maxerror:
