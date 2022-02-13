@@ -1,0 +1,12 @@
+Shifted Power Method
+
+Eigen Value
+	4.0000
+
+Eigen Vector
+	0.3244
+	0.4867
+	0.8111
+
+Iterations
+	7.0000
